@@ -1,24 +1,29 @@
 import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/Navbar';
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import SingelProduct from './pages/SingelProduct';
+import Products from './pages/Products';
+import { createContext, useEffect, useState } from 'react';
+import axios from 'axios';
 
+
+export const productContext = createContext()
 function App() {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/products' element={<Products />} />
+          <Route path='/products/:id' element={<SingelProduct />} />
+        </Routes>
+      </div>
+
   );
 }
 
